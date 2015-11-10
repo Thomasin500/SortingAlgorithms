@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <iostream>
+#include <algorithm> //needed for min
 
 using namespace std;
 
@@ -11,12 +12,23 @@ public:
 
 	sortingAlgorithms() {}
 
+	//copies all the elements of b into a so that when finished, a == b
+	//no changes made to b
+	template <typename Comparable>
+	void copyArray(vector<Comparable> & a, vector<Comparable> & b) {
+
+		for (int i = 0; i < a.size(); i++) {
+
+			a[i] = b[i];
+		}
+	}
+
 	template <typename Comparable>
 	bool checkSorted(vector<Comparable> & a) {
 
 		bool sorted = true;
 
-		for (int i = 1; i < a.size(); i++) {
+		for (int i = 0; i < a.size(); i++) {
 
 			if (a[i - 1] > a[i]) {
 
@@ -109,7 +121,45 @@ public:
 	template <typename Comparable>
 	void mergeSort(vector<Comparable> & a) {
 
+		cout << "\nStarting Merge Sort\n" << endl;
 
+		const int size = a.size();
+
+		vector<Comparable> finalArray(size);
+
+		for (int subArrays = 1; subArrays < size; subArrays *= 2) {
+
+			for (int i = 0; i < a.size(); i = i + 2 * subArrays) {
+
+				mergeSortUtil(a, i, min(i + subArrays, size), min(i + 2 * subArrays, size), finalArray);
+			}
+
+			copyArray(a, finalArray);			
+		}
+
+		cout << "Merge Sort Finished:\n";
+		display(a);
+	}
+
+	//merges two arrays into one sorted array
+	template <typename Comparable>
+	void mergeSortUtil(vector<Comparable> & a, int left, int right, int end, vector<Comparable> & b) {
+
+		int i = left;
+		int j = right;
+
+		for (int k = left; k < end; k++) {
+
+			if (i < right && (j >= end || a[i] <= a[j])) {
+
+				b[k] = a[i];
+				i++;
+			} else {
+
+				b[k] = a[j];
+				j++;
+			}
+		}
 	}
 
 	template <typename Comparable>

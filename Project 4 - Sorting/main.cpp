@@ -12,8 +12,6 @@
 
 using namespace std;
 
-sortingAlgorithms sort;
-
 vector<int> array1 = { 7, 3, 8, 1, 0, 5, 9, 2, 4, 6 };
 
 void permute(vector<int> & a) {
@@ -37,6 +35,8 @@ bool checkSort(const vector<int> & a) {
 }
 
 void testAlgorithms() {
+
+	sortingAlgorithms sort;
 
 	vector<int> array1 = { 7, 3, 8, 1, 0, 5, 9, 2, 4, 6 };
 	vector<int> array2 = { 6, 4, 8, 9, 2, 3, 10, 7, 1, 5 };
