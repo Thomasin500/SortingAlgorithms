@@ -33,7 +33,7 @@ public:
 	template <typename Comparable>
 	void selectionSort(vector<Comparable> & a) {
 
-		cout << "Starting Selection Sort" << endl;
+		cout << "\nStarting Selection Sort" << endl;
 	
 		for (int i = 0; i < a.size(); i++) {
 
@@ -57,13 +57,45 @@ public:
 	template <typename Comparable>
 	void bubbleSort(vector<Comparable> & a) {
 
+		cout << "\nStarting Bubble Sort" << endl;
 
+		bool swappable = true;
+
+		while (swappable) {
+
+			swappable = false;
+
+			for (int i = 1; i < a.size() ; i++) {
+
+				if (a[i - 1] > a[i]) {
+
+					swap(a[i - 1], a[i]);
+					swappable = true;
+				}
+			}
+
+			cout << "Bubble Sort Finished:\n";
+			display(a);
+		}
 	}
 
 	template <typename Comparable>
 	void insertionSort(vector<Comparable> & a) {
 
+		cout << "\nStarting Insertion Sort" << endl;
 
+		for (int i = 0; i < a.size(); i++) {
+
+			int j = i;
+
+			while (j > 0 && a[j - 1] > a[j]) {
+				swap(a[j], a[j - 1]);
+				j--;
+			}
+		}
+
+		cout << "Insertion Sort Finished:\n";
+		display(a);
 	}
 
 	template <typename Comparable>
