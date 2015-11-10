@@ -14,9 +14,17 @@ public:
 	template <typename Comparable>
 	bool checkSorted(vector<Comparable> & a) {
 
+		bool sorted = true;
 
+		for (int i = 1; i < a.size(); i++) {
 
-		return false;
+			if (a[i - 1] > a[i]) {
+
+				sorted = false;
+			}
+		}
+
+		return sorted;
 	}
 
 	template <typename Comparable>
@@ -72,11 +80,11 @@ public:
 					swap(a[i - 1], a[i]);
 					swappable = true;
 				}
-			}
-
-			cout << "Bubble Sort Finished:\n";
-			display(a);
+			}			
 		}
+
+		cout << "Bubble Sort Finished:\n";
+		display(a);
 	}
 
 	template <typename Comparable>
@@ -111,13 +119,13 @@ public:
 	}
 
 	template <typename Comparable>
-	void sortingAlgorithms::randomquickSort(vector<Comparable> & a) {
+	void randomQuickSort(vector<Comparable> & a) {
 
 
 	}
 
 	template <typename Comparable>
-	void sortingAlgorithms::heapsort(vector<Comparable> & a) {
+	void heapSort(vector<Comparable> & a) {
 
 
 	}

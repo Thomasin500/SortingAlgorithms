@@ -23,41 +23,24 @@ void permute(vector<int> & a) {
 
 bool checkSort(const vector<int> & a) {
 
-	return false;
-}
+	bool sorted = true;
 
-void selection(vector<int> & a) {
+	for (int i = 1; i < a.size(); i++) {
 
-	sort.selectionSort(a);
-}
+		if (a[i - 1] > a[i]) {
 
-void bubble(vector<int> & a) {
+			sorted = false;
+		}
+	}
 
-	sort.bubbleSort(a);
-}
-
-void insertion(vector<int> & a) {
-
-	sort.insertionSort(a);
-}
-
-void merge(vector<int> & a) {
-
-}
-
-void quick(vector<int> & a) {
-
-}
-
-void randomQuick(vector<int> & a) {
-
-}
-
-void heap(vector<int> & a) {
-
+	return sorted;
 }
 
 void testAlgorithms() {
+
+	vector<int> array1 = { 7, 3, 8, 1, 0, 5, 9, 2, 4, 6 };
+	vector<int> array2 = { 6, 4, 8, 9, 2, 3, 10, 7, 1, 5 };
+	vector<int> array3 = { 9, 4, 8, 6, 1, 3, 0, 5, 7, 2 };
 
 	int input = NULL;
 
@@ -68,31 +51,31 @@ void testAlgorithms() {
 	switch (input) {
 
 	case 0:
-		selection(array1);
+		sort.selectionSort(array1);
 		cout << "Array is sorted: " << checkSort(array1) << endl;
 		break;
 	case 1:
-		bubble(array1);
+		sort.bubbleSort(array1);
 		cout << "Array is sorted: " << checkSort(array1) << endl;
 		break;
 	case 2:
-		insertion(array1);
+		sort.insertionSort(array1);
 		cout << "Array is sorted: " << checkSort(array1) << endl;
 		break;
 	case 3:
-		merge(array1);
+		sort.mergeSort(array1);
 		cout << "Array is sorted: " << checkSort(array1) << endl;
 		break;
 	case 4:
-		quick(array1);
+		sort.quickSort(array1);
 		cout << "Array is sorted: " << checkSort(array1) << endl;
 		break;
 	case 5:
-		randomQuick(array1);
+		sort.randomQuickSort(array1);
 		cout << "Array is sorted: " << checkSort(array1) << endl;
 		break;
 	case 6:
-		heap(array1);
+		sort.heapSort(array1);
 		cout << "Array is sorted: " << checkSort(array1) << endl;
 		break;
 	default:
@@ -110,12 +93,11 @@ void testAlgorithms() {
 
 int main(const vector<int> & a) {
 
+	//ector<int> sortedArray = {1,2,3,4,5};
+
+	//cout << sort.checkSorted(sortedArray);
+
 	testAlgorithms();	
-
-	vector<int> array1 = {7, 3, 8, 1, 0, 5, 9, 2, 4, 6};
-	vector<int> array2 = { 6, 4, 8, 9, 2, 3, 10, 7, 1, 5 };
-	vector<int> array3= { 9, 4, 8, 6, 1, 3, 0, 5, 7, 2};
-
 	
 	cout << "\n\nDone\n" << endl;
 
