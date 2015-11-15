@@ -14,8 +14,32 @@ using namespace std;
 
 vector<int> array1 = { 7, 3, 8, 1, 0, 5, 9, 2, 4, 6 };
 
+//TODO implement heap sort, permutations, and have each sorting function call do a permutation a few times
+
+
 void permute(vector<int> & a) {
 
+
+	/*//displays each permutation   ---  from project 3
+	template <class T>
+	void outputPermutations(T* items, int pos, const int& size, ostream& out) {
+
+		if (pos == size) {
+
+			//out << "Array is empty" << endl;
+			outputArray(items, size, out);
+			return;
+		}
+		else {
+
+			for (int i = pos; i < size; i++) {
+
+				swap(items[i], items[pos]);
+				outputPermutations(items, pos + 1, size, out);
+				swap(items[i], items[pos]);
+			}
+		}
+	}*/
 
 }
 
@@ -34,6 +58,17 @@ bool checkSort(const vector<int> & a) {
 	return sorted;
 }
 
+template <typename Comparable>
+void display(vector<Comparable> & a) {
+
+	for (int i = 0; i < a.size(); i++) {
+
+		cout << a[i] << " ";
+	}
+
+	cout << "\n\n";
+}
+
 void testAlgorithms() {
 
 	sortingAlgorithms sort;
@@ -50,36 +85,46 @@ void testAlgorithms() {
 
 	switch (input) {
 
-	case 0:
-		sort.selectionSort(array1);
-		cout << "Array is sorted: " << checkSort(array1) << endl;
-		break;
-	case 1:
-		sort.bubbleSort(array1);
-		cout << "Array is sorted: " << checkSort(array1) << endl;
-		break;
-	case 2:
-		sort.insertionSort(array1);
-		cout << "Array is sorted: " << checkSort(array1) << endl;
-		break;
-	case 3:
-		sort.mergeSort(array1);
-		cout << "Array is sorted: " << checkSort(array1) << endl;
-		break;
-	case 4:
-		sort.quickSort(array1);
-		cout << "Array is sorted: " << checkSort(array1) << endl;
-		break;
-	case 5:
-		sort.randomQuickSort(array1);
-		cout << "Array is sorted: " << checkSort(array1) << endl;
-		break;
-	case 6:
-		sort.heapSort(array1);
-		cout << "Array is sorted: " << checkSort(array1) << endl;
-		break;
-	default:
-		break;
+		case 0:
+			sort.selectionSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+			break;
+		case 1:
+			sort.bubbleSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+			break;
+		case 2:
+			sort.insertionSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+			break;
+		case 3:
+			sort.mergeSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+			break;
+		case 4:		
+			cout << "\nStarting Quick Sort" << endl;
+			sort.quickSort(array1, 0, array1.size() - 1);
+
+			cout << "Quick Sort Finished:\n";
+			display(array1);
+
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+			break;
+		case 5:
+			cout << "\nStarting Random Quick Sort" << endl;
+			sort.randomQuickSort(array1, 0, array1.size() - 1);
+
+			cout << "Random Quick Sort Finished:\n";
+			display(array1);
+
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+			break;
+		case 6:
+			sort.heapSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+			break;
+		default:
+			break;
 	}
 
 	cout << "\n\nWould you like to test another sorting algorithm? (0 for no, 1 for yes)\n";

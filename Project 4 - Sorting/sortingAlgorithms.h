@@ -163,15 +163,67 @@ public:
 	}
 
 	template <typename Comparable>
-	void quickSort(vector<Comparable> & a) {
+	void quickSort(vector<Comparable> & a, int low, int high) {
+		
+		if (low < high) {
 
+			int pivot = quickSortUtil(a, low, high);
 
+			quickSort(a, low, pivot - 1);
+			quickSort(a, pivot + 1, high);
+		}	
+	}
+	
+	template <typename Comparable>
+	int quickSortUtil(vector<Comparable> & a, int low, int high) {
+
+		int temp = low;
+		int pivot = a[low];
+
+		for (int i = low + 1; i <= high; i++) {
+			
+			if (a[i] <= pivot) {
+
+				temp++;
+				swap(a[i], a[temp]);
+			}
+		}
+
+		swap(a[temp], a[low]);
+
+		return temp;
 	}
 
 	template <typename Comparable>
-	void randomQuickSort(vector<Comparable> & a) {
+	void randomQuickSort(vector<Comparable> & a, int low, int high) {
 
+		if (low < high) {
 
+			int pivot = quickSortUtil(a, low, high);
+
+			quickSort(a, low, pivot - 1);
+			quickSort(a, pivot + 1, high);
+		}
+	}
+
+	template <typename Comparable>
+	int randomQuickSortUtil(vector<Comparable> & a, int low, int high) {
+
+		int temp = low;
+		int pivot = a[rand() % a.size()];
+
+		for (int i = low + 1; i <= high; i++) {
+
+			if (a[i] <= pivot) {
+
+				temp++;
+				swap(a[i], a[temp]);
+			}
+		}
+
+		swap(a[temp], a[low]);
+
+		return temp;
 	}
 
 	template <typename Comparable>
