@@ -22,6 +22,12 @@ public:
 			a[i] = b[i];
 		}
 	}
+	/*-----------------------------------------------------------------------
+	copyArray
+
+	Precondition:  vector array a and vector array b
+	Postcondition: all elements of a are now the elements of b
+	-----------------------------------------------------------------------*/
 
 	template <typename Comparable>
 	bool checkSorted(vector<Comparable> & a) {
@@ -38,6 +44,12 @@ public:
 
 		return sorted;
 	}
+	/*-----------------------------------------------------------------------
+	checkSorted
+
+	Precondition:  vector array a
+	Postcondition: returns true if the array is sorted
+	-----------------------------------------------------------------------*/
 
 	template <typename Comparable>
 	void display(vector<Comparable> & a) {
@@ -49,11 +61,15 @@ public:
 
 		cout << "\n\n";
 	}
+	/*-----------------------------------------------------------------------
+	display
+
+	Precondition:  vector array a
+	Postcondition: outputs all elements of the array
+	-----------------------------------------------------------------------*/
 
 	template <typename Comparable>
 	void selectionSort(vector<Comparable> & a) {
-
-		cout << "\nStarting Selection Sort" << endl;
 	
 		for (int i = 0; i < a.size(); i++) {
 
@@ -73,11 +89,15 @@ public:
 		cout << "Selection Sort Finished:\n";
 		display(a);
 	}
+	/*-----------------------------------------------------------------------
+	selectionSort
+
+	Precondition:  implements selection sort
+	Postcondition: the array is now sorted
+	-----------------------------------------------------------------------*/
 
 	template <typename Comparable>
 	void bubbleSort(vector<Comparable> & a) {
-
-		cout << "\nStarting Bubble Sort" << endl;
 
 		bool swappable = true;
 
@@ -98,11 +118,15 @@ public:
 		cout << "Bubble Sort Finished:\n";
 		display(a);
 	}
+	/*-----------------------------------------------------------------------
+	bubbleSort
+
+	Precondition:  implements bubble sort
+	Postcondition: the array is now sorted
+	-----------------------------------------------------------------------*/
 
 	template <typename Comparable>
 	void insertionSort(vector<Comparable> & a) {
-
-		cout << "\nStarting Insertion Sort" << endl;
 
 		for (int i = 0; i < a.size(); i++) {
 
@@ -117,11 +141,15 @@ public:
 		cout << "Insertion Sort Finished:\n";
 		display(a);
 	}
+	/*-----------------------------------------------------------------------
+	insertionSort
+
+	Precondition:  implements insertion sort
+	Postcondition: the array is now sorted
+	-----------------------------------------------------------------------*/
 
 	template <typename Comparable>
 	void mergeSort(vector<Comparable> & a) {
-
-		cout << "\nStarting Merge Sort\n" << endl;
 
 		const int size = a.size();
 
@@ -140,6 +168,12 @@ public:
 		cout << "Merge Sort Finished:\n";
 		display(a);
 	}
+	/*-----------------------------------------------------------------------
+	mergeSort
+
+	Precondition:  implements merge sort
+	Postcondition: the array is now sorted
+	-----------------------------------------------------------------------*/
 
 	//merges two arrays into one sorted array
 	template <typename Comparable>
@@ -161,6 +195,12 @@ public:
 			}
 		}
 	}
+	/*-----------------------------------------------------------------------
+	mergeSort util
+
+	Precondition: a util function of merge sort
+	Postcondition: the array is now sorted
+	-----------------------------------------------------------------------*/
 
 	template <typename Comparable>
 	void quickSort(vector<Comparable> & a, int low, int high) {
@@ -173,6 +213,12 @@ public:
 			quickSort(a, pivot + 1, high);
 		}	
 	}
+	/*-----------------------------------------------------------------------
+	quickSort
+
+	Precondition:  implements quick sort
+	Postcondition: the array is now sorted
+	-----------------------------------------------------------------------*/
 	
 	template <typename Comparable>
 	int quickSortUtil(vector<Comparable> & a, int low, int high) {
@@ -181,7 +227,7 @@ public:
 		int pivot = a[low];
 
 		for (int i = low + 1; i <= high; i++) {
-			
+
 			if (a[i] <= pivot) {
 
 				temp++;
@@ -193,6 +239,13 @@ public:
 
 		return temp;
 	}
+	/*-----------------------------------------------------------------------
+	quickSortUtil
+
+	Precondition:  a utility function of quick sort
+	Postcondition: the array is now sorted
+	-----------------------------------------------------------------------*/
+
 
 	template <typename Comparable>
 	void randomQuickSort(vector<Comparable> & a, int low, int high) {
@@ -205,6 +258,12 @@ public:
 			quickSort(a, pivot + 1, high);
 		}
 	}
+	/*-----------------------------------------------------------------------
+	randomQuickSort
+
+	Precondition:  implements random quick sort
+	Postcondition: the array is now sorted
+	-----------------------------------------------------------------------*/
 
 	template <typename Comparable>
 	int randomQuickSortUtil(vector<Comparable> & a, int low, int high) {
@@ -225,11 +284,83 @@ public:
 
 		return temp;
 	}
+	/*-----------------------------------------------------------------------
+	randomQuickSortUtil
+
+	Precondition:  a utility function for random quick sort
+	Postcondition: the array is now sorted
+	-----------------------------------------------------------------------*/
+
+	//builds a max heap
+	template <typename Comparable>
+	void buildHeap(vector<Comparable> & a) {
+
+		for (int i = a.size() / 2; i >= 1; i--) {
+
+			heapify(a, i, a.size());
+		}
+
+		display(a);
+	}
+	/*-----------------------------------------------------------------------
+	build heap
+
+	Precondition:  vector array a
+	Postcondition: the array is now sorted as a max heap
+	-----------------------------------------------------------------------*/
 
 	template <typename Comparable>
 	void heapSort(vector<Comparable> & a) {
 
+		buildHeap(a);
 
+		int temp;
+		
+		for (int i = a.size(); i >= 2; i--) {
+
+			temp = a[i];
+			a[i] = a[1];
+			a[1] = temp;
+			heapify(a, 1, i - 1);
+		}
 	}
+	/*-----------------------------------------------------------------------
+	heap sort
 
+	Precondition:  implements heap sort with vector array a
+	Postcondition: the array is now sorted
+	-----------------------------------------------------------------------*/
+
+	template <typename Comparable>
+	void heapify(vector<Comparable> & a, int i, int n) {
+
+		int temp = a[i];
+		int j = i * 2;
+
+		cout << temp << endl;
+		cout << j;
+
+		while (j <= n) {
+
+			if (j < n && a[j + 1] > a[j]) {
+
+				j++;
+			}
+
+			if (temp > a[j]) break;
+
+			else if (temp <= a[j]) {
+
+				a[j / 2] = a[j];
+				j *= 2;
+			}
+		}
+		a[j / 2] = temp;
+	}
+	/*-----------------------------------------------------------------------
+	heapify
+
+	Precondition:  bubbles up 
+	Postcondition: the array is now sorted
+	-----------------------------------------------------------------------*/
 };

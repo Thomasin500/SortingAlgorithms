@@ -14,33 +14,27 @@ using namespace std;
 
 vector<int> array1 = { 7, 3, 8, 1, 0, 5, 9, 2, 4, 6 };
 
-//TODO implement heap sort, permutations, and have each sorting function call do a permutation a few times
+//TODO implement heap sort
 
+template <typename Comparable>
+void display(vector<Comparable> & a) {
 
-void permute(vector<int> & a) {
+	for (int i = 0; i < a.size(); i++) {
 
+		cout << a[i] << " ";
+	}
 
-	/*//displays each permutation   ---  from project 3
-	template <class T>
-	void outputPermutations(T* items, int pos, const int& size, ostream& out) {
+	cout << "\n\n";
+}
 
-		if (pos == size) {
-
-			//out << "Array is empty" << endl;
-			outputArray(items, size, out);
-			return;
-		}
-		else {
-
-			for (int i = pos; i < size; i++) {
-
-				swap(items[i], items[pos]);
-				outputPermutations(items, pos + 1, size, out);
-				swap(items[i], items[pos]);
-			}
-		}
-	}*/
-
+//swaps a random element of the array 5 times to ensure true randomness
+void permute(vector<int> & a) {	
+	
+	swap(a[rand() % a.size()], a[rand() % a.size()]);
+	swap(a[rand() % a.size()], a[rand() % a.size()]);
+	swap(a[rand() % a.size()], a[rand() % a.size()]);
+	swap(a[rand() % a.size()], a[rand() % a.size()]);
+	swap(a[rand() % a.size()], a[rand() % a.size()]);
 }
 
 bool checkSort(const vector<int> & a) {
@@ -58,52 +52,159 @@ bool checkSort(const vector<int> & a) {
 	return sorted;
 }
 
-template <typename Comparable>
-void display(vector<Comparable> & a) {
-
-	for (int i = 0; i < a.size(); i++) {
-
-		cout << a[i] << " ";
-	}
-
-	cout << "\n\n";
-}
-
 void testAlgorithms() {
 
 	sortingAlgorithms sort;
 
 	vector<int> array1 = { 7, 3, 8, 1, 0, 5, 9, 2, 4, 6 };
-	vector<int> array2 = { 6, 4, 8, 9, 2, 3, 10, 7, 1, 5 };
-	vector<int> array3 = { 9, 4, 8, 6, 1, 3, 0, 5, 7, 2 };
 
 	int input = NULL;
 
 	cout << "\nWhich Sorting Algorithm Would You Like To Test?\n\n";
-	cout << "Selection (0)\nBubble (1)\nInsertion (2)\nMerge (3)\nQuick (4)\nRandom Quick (5)\nHeap (6)\n\n";
+	cout << "Selection (0)\nBubble (1)\nInsertion (2)\nMerge (3)\nQuick (4)\nRandom Quick (5)\nHeap (6)\nShow Permutations (7)\n\n";
 	cin >> input;
+	cout << endl;
+
+	cout << "Current Array is: " << endl;
+	display(array1);	
 
 	switch (input) {
 
 		case 0:
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Selection Sort" << endl;
 			sort.selectionSort(array1);
 			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Array after permutation is: " << endl;
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Selection Sort" << endl;
+			sort.selectionSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Array after permutation is: " << endl;
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Selection Sort" << endl;
+			sort.selectionSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
 			break;
 		case 1:
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Bubble Sort" << endl;
+			sort.bubbleSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Bubble Sort" << endl;
+			sort.bubbleSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Bubble Sort" << endl;
 			sort.bubbleSort(array1);
 			cout << "Array is sorted: " << checkSort(array1) << endl;
 			break;
 		case 2:
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Insertion Sort" << endl;
+			sort.insertionSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Insertion Sort" << endl;
+			sort.insertionSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Insertion Sort" << endl;
 			sort.insertionSort(array1);
 			cout << "Array is sorted: " << checkSort(array1) << endl;
 			break;
 		case 3:
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Merge Sort" << endl;
+			sort.mergeSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Merge Sort" << endl;
+			sort.mergeSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Merge Sort" << endl;
 			sort.mergeSort(array1);
 			cout << "Array is sorted: " << checkSort(array1) << endl;
 			break;
 		case 4:		
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
 			cout << "\nStarting Quick Sort" << endl;
 			sort.quickSort(array1, 0, array1.size() - 1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Quick Sort Finished:\n";
+			display(array1);
+
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Quick Sort" << endl;
+			sort.quickSort(array1, 0, array1.size() - 1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Quick Sort Finished:\n";
+			display(array1);
+
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Quick Sort" << endl;
+			sort.quickSort(array1, 0, array1.size() - 1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
 
 			cout << "Quick Sort Finished:\n";
 			display(array1);
@@ -111,8 +212,39 @@ void testAlgorithms() {
 			cout << "Array is sorted: " << checkSort(array1) << endl;
 			break;
 		case 5:
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
 			cout << "\nStarting Random Quick Sort" << endl;
 			sort.randomQuickSort(array1, 0, array1.size() - 1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Random Quick Sort Finished:\n";
+			display(array1);
+
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Random Quick Sort" << endl;
+			sort.randomQuickSort(array1, 0, array1.size() - 1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Random Quick Sort Finished:\n";
+			display(array1);
+
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Random Quick Sort" << endl;
+			sort.randomQuickSort(array1, 0, array1.size() - 1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
 
 			cout << "Random Quick Sort Finished:\n";
 			display(array1);
@@ -120,7 +252,38 @@ void testAlgorithms() {
 			cout << "Array is sorted: " << checkSort(array1) << endl;
 			break;
 		case 6:
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Heap Sort" << endl;
 			sort.heapSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Heap Sort Finished:\n";
+			display(array1);
+
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+			cout << "Array after permutation is: ";
+			permute(array1);
+			display(array1);
+
+			cout << "\nStarting Heap Sort" << endl;
+			sort.heapSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Heap Sort Finished:\n";
+			display(array1);
+
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "\nStarting Heap Sort" << endl;
+			sort.heapSort(array1);
+			cout << "Array is sorted: " << checkSort(array1) << endl;
+
+			cout << "Heap Sort Finished:\n";
+			display(array1);
+
 			cout << "Array is sorted: " << checkSort(array1) << endl;
 			break;
 		default:
@@ -138,16 +301,10 @@ void testAlgorithms() {
 
 int main(const vector<int> & a) {
 
-	//ector<int> sortedArray = {1,2,3,4,5};
-
-	//cout << sort.checkSorted(sortedArray);
-
 	testAlgorithms();	
 	
 	cout << "\n\nDone\n" << endl;
 
 	cin.ignore();
-	cin.ignore();
-
 	return 1;
 }
